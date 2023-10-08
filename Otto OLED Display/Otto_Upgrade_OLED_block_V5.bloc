@@ -1,0 +1,216 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <toolbox>toolbox_arduino_all</toolbox>
+  <block type="base_setup_loop" id="8~4lDua1!@,4wui.]B9i" x="448" y="171">
+    <statement name="DO">
+      <block type="otto_configuration" id="Bk3:z]BBnGK?C}giH){D">
+        <field name="PIN_YL">2</field>
+        <field name="PIN_YR">3</field>
+        <field name="PIN_RL">4</field>
+        <field name="PIN_RR">5</field>
+        <field name="PIN_Buzzer">13</field>
+        <next>
+          <block type="OLED_init" id="1X1rP!r0l6X3N1j0$yF;">
+            <field name="height">64</field>
+            <field name="address">0x3C</field>
+            <next>
+              <block type="ultrasonic_sensor" id="ue4Wf8?eHgs6b7*%m=s[">
+                <field name="US_NUMBER">1</field>
+                <field name="PIN_TRIG">8</field>
+                <field name="PIN_ECHO">9</field>
+                <next>
+                  <block type="dht_sensor2" id="Wz5`:Bq7R!B,n{GhDxx1">
+                    <mutation matrix="null"></mutation>
+                    <field name="DHT_NUMBER">1</field>
+                    <field name="OUTPUT_TYPE">0</field>
+                    <field name="PIN_DHT">10</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP">
+      <block type="controls_if" id="6t9cTx$xUy9xkMq!1^Xp">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="button_touch_sensor2" id="j0Mg:q9uwx_F+m.^_np;">
+            <field name="PIN_BUTTON">A0</field>
+            <field name="LOGIC">FALSE</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="otto_home" id="W~7OGY$,V|Fqda;80EwD">
+            <next>
+              <block type="OLED_clear" id="$j#blX/1u[0r!x*%ge~#">
+                <next>
+                  <block type="OLED_circle" id=".nMpR|O{E-#7SwE)NN?!">
+                    <field name="fill">FALSE</field>
+                    <field name="draw">TRUE</field>
+                    <value name="X">
+                      <shadow type="math_number" id="rz1Kq.S~ui.,J=_TX99S">
+                        <field name="NUM">32</field>
+                      </shadow>
+                    </value>
+                    <value name="Y">
+                      <shadow type="math_number" id="bM1yQdSe1*ph=D4@KA9y">
+                        <field name="NUM">32</field>
+                      </shadow>
+                    </value>
+                    <value name="width">
+                      <shadow type="math_number" id="qh7tN0WCOXp5IwJ=rX`o">
+                        <field name="NUM">25</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="OLED_circle" id="!h:%mBeE@fs,=RrR!En~">
+                        <field name="fill">FALSE</field>
+                        <field name="draw">TRUE</field>
+                        <value name="X">
+                          <shadow type="math_number" id="?etFJJwa6XI2q6n$DRn$">
+                            <field name="NUM">100</field>
+                          </shadow>
+                        </value>
+                        <value name="Y">
+                          <shadow type="math_number" id="CEEd95c}N+):;yYu|q)S">
+                            <field name="NUM">32</field>
+                          </shadow>
+                        </value>
+                        <value name="width">
+                          <shadow type="math_number" id="$.A=#g0Eq0V-*7K7U(V:">
+                            <field name="NUM">25</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="OLED_circle" id="nV{/jOEGu!CKx3(1mAb-">
+                            <field name="fill">TRUE</field>
+                            <field name="draw">TRUE</field>
+                            <value name="X">
+                              <shadow type="math_number" id="(S~OVI*c],r(yC.YYxUv">
+                                <field name="NUM">42</field>
+                              </shadow>
+                            </value>
+                            <value name="Y">
+                              <shadow type="math_number" id="S,/45?u8DJ-/kLjBW*d)">
+                                <field name="NUM">20</field>
+                              </shadow>
+                            </value>
+                            <value name="width">
+                              <shadow type="math_number" id="d96~^|vOjOK*sISf4/r{">
+                                <field name="NUM">5</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="OLED_circle" id="}9md3j2uYvt3I^-2l(Sg">
+                                <field name="fill">TRUE</field>
+                                <field name="draw">TRUE</field>
+                                <value name="X">
+                                  <shadow type="math_number" id="A:LrvwJEoQQXLkE;4NL*">
+                                    <field name="NUM">110</field>
+                                  </shadow>
+                                </value>
+                                <value name="Y">
+                                  <shadow type="math_number" id="hAnVZK+r/V?=@U3`f0Ww">
+                                    <field name="NUM">20</field>
+                                  </shadow>
+                                </value>
+                                <value name="width">
+                                  <shadow type="math_number" id="pPsYwd:IlG?Mex:gi|fn">
+                                    <field name="NUM">5</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="OLED_display" id="%CLAwv[bO|qjL/ox{v@~">
+                                    <next>
+                                      <block type="base_delay" id="v.Mx;[+`{-+Ys*ACh`Ig">
+                                        <field name="unite">s</field>
+                                        <value name="DELAY_TIME">
+                                          <shadow type="math_number" id="`]L1@-1[WD87NClvNH8k">
+                                            <field name="NUM">3</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="OLED_clear" id="kTm7^agDl;Cus860vghC"></block>
+        </statement>
+        <next>
+          <block type="controls_if" id="rwTqj@TWt2BOm(31mlB-">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="oK#lNauHV,jyH(}p!NJ0">
+                <field name="OP">LT</field>
+                <value name="A">
+                  <block type="ultrasonic_distance" id="XAs`(`AJ8#ZfryOM~1NT">
+                    <field name="US_NUMBER">1</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <shadow type="math_number" id="js**HFLXclgF~zA.c:pS">
+                    <field name="NUM">20</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="otto_sound" id="Jraf.WZVsp#JY#Z1)RqO">
+                <field name="otto_sound">S_OhOoh2</field>
+                <next>
+                  <block type="controls_repeat_ext" id="]xQr5UBgjl`:H)PG]39;">
+                    <value name="TIMES">
+                      <shadow type="math_number" id="Doc[Tgmm+EBy2H;Idi:`">
+                        <field name="NUM">4</field>
+                      </shadow>
+                    </value>
+                    <statement name="DO">
+                      <block type="otto_move" id="_6J+KXG%0I!Rz5P%.[]H">
+                        <field name="otto_move_sens">BACKWARD</field>
+                        <field name="otto_move_speed">2000</field>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="controls_repeat_ext" id="*]S_B|Xem[C$|fS%pR,A">
+                        <value name="TIMES">
+                          <shadow type="math_number" id="NFy35~7gkW;#3xPEope^">
+                            <field name="NUM">6</field>
+                          </shadow>
+                        </value>
+                        <statement name="DO">
+                          <block type="otto_move" id="qeJ_.w8A+h+%Bl=!X6_A">
+                            <field name="otto_move_sens">RIGHT</field>
+                            <field name="otto_move_speed">1000</field>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="otto_move" id="jW%y-W?|POX0ZGYdbc{v">
+                <field name="otto_move_sens">FORWARD</field>
+                <field name="otto_move_speed">1000</field>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

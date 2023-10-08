@@ -1,0 +1,151 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <toolbox>toolbox_arduino_all</toolbox>
+  <block type="base_setup_loop" id="8~4lDua1!@,4wui.]B9i" x="39" y="-61">
+    <statement name="DO">
+      <block type="otto_configuration" id=".0`0P;qz3v6sA@`5jxS$">
+        <field name="PIN_YL">2</field>
+        <field name="PIN_YR">3</field>
+        <field name="PIN_RL">4</field>
+        <field name="PIN_RR">5</field>
+        <field name="PIN_Buzzer">13</field>
+        <next>
+          <block type="OLED_init" id="1X1rP!r0l6X3N1j0$yF;">
+            <field name="height">32</field>
+            <field name="address">0x3C</field>
+            <next>
+              <block type="dht_sensor2" id="Wz5`:Bq7R!B,n{GhDxx1">
+                <mutation matrix="null"></mutation>
+                <field name="DHT_NUMBER">1</field>
+                <field name="OUTPUT_TYPE">0</field>
+                <field name="PIN_DHT">10</field>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP">
+      <block type="controls_if" id="6t9cTx$xUy9xkMq!1^Xp">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="button_touch_sensor2" id="j0Mg:q9uwx_F+m.^_np;">
+            <field name="PIN_BUTTON">A0</field>
+            <field name="LOGIC">FALSE</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="otto_sound" id="WtUc5S9MvitaS=W5Xvpq">
+            <field name="otto_sound">S_superHappy</field>
+            <next>
+              <block type="OLED_clear" id="$j#blX/1u[0r!x*%ge~#">
+                <next>
+                  <block type="OLED_data" id="{;(UA^1a=jqcZ7zY:L2y">
+                    <field name="draw">FALSE</field>
+                    <value name="X">
+                      <shadow type="math_number" id=")}13|Z+DJu+6P)^_FF2{">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                    <value name="Y">
+                      <shadow type="math_number" id="NobQ.4Yad-ylBJA7u$lz">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                    <value name="height">
+                      <shadow type="math_number" id=":l],^fX+ucMUZxpo:k(Q">
+                        <field name="NUM">3</field>
+                      </shadow>
+                    </value>
+                    <value name="print">
+                      <shadow type="text" id="A#XX-L?O|jLzKHZ.O|jp">
+                        <field name="TEXT">Hello Otto</field>
+                      </shadow>
+                      <block type="dht_measure" id="wh4;nl2Dhayn6EA7mMNy">
+                        <mutation matrix="null"></mutation>
+                        <field name="DHT_NUMBER">1</field>
+                        <field name="OUTPUT_TYPE">0</field>
+                        <field name="OUTPUT_VALUE">2</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="OLED_display" id="%CLAwv[bO|qjL/ox{v@~"></block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="OLED_clear" id="VYC3@L]|QR?Ok*ANA3y~">
+            <next>
+              <block type="OLED_data" id="3.f{ZqQBuAOG^4M^:s!6">
+                <field name="draw">FALSE</field>
+                <value name="X">
+                  <shadow type="math_number" id="U3~%a7uJhz`@I0L*VT-9">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="Y">
+                  <shadow type="math_number" id="6I3?Oa}2}zSGDL#P%$|^">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="height">
+                  <shadow type="math_number" id="us*O/g0(EMvS${K8+)r]">
+                    <field name="NUM">3</field>
+                  </shadow>
+                </value>
+                <value name="print">
+                  <shadow type="text" id="_=Pl?m=K+93MPEHpTavI">
+                    <field name="TEXT">Hello Otto</field>
+                  </shadow>
+                  <block type="dht_measure" id="vIG{3}`+RjN9Jpi0V~Q8">
+                    <mutation matrix="null"></mutation>
+                    <field name="DHT_NUMBER">1</field>
+                    <field name="OUTPUT_TYPE">0</field>
+                    <field name="OUTPUT_VALUE">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="OLED_data" id="[TeT(sAA!]F|cO~KK~Ll">
+                    <field name="draw">FALSE</field>
+                    <value name="X">
+                      <shadow type="math_number" id="]Zmz;tel;T(?b|)tt|!-">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                    <value name="Y">
+                      <shadow type="math_number" id="}|vd9h{*jqL=%3`OCKzU">
+                        <field name="NUM">35</field>
+                      </shadow>
+                    </value>
+                    <value name="height">
+                      <shadow type="math_number" id="xU0RrF-fUWxpJ+`o`*#0">
+                        <field name="NUM">3</field>
+                      </shadow>
+                    </value>
+                    <value name="print">
+                      <shadow type="text" id="_=Pl?m=K+93MPEHpTavI">
+                        <field name="TEXT">Hello Otto</field>
+                      </shadow>
+                      <block type="dht_measure" id="R;?6=BeMR-S{?Q6JaOZ%">
+                        <mutation matrix="null"></mutation>
+                        <field name="DHT_NUMBER">1</field>
+                        <field name="OUTPUT_TYPE">0</field>
+                        <field name="OUTPUT_VALUE">1</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="OLED_display" id="2{BaF(J#kRc$%ru:2{o0"></block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,255 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <toolbox>toolbox_arduino_all</toolbox>
+  <block type="base_setup_loop" id="I_*sR{h/K^MKEwQCP)ce" x="296" y="108">
+    <statement name="DO">
+      <block type="otto_configuration" id="FJ*TLypVj/3vE4#0};).">
+        <field name="PIN_YL">2</field>
+        <field name="PIN_YR">3</field>
+        <field name="PIN_RL">4</field>
+        <field name="PIN_RR">5</field>
+        <field name="PIN_Buzzer">13</field>
+        <next>
+          <block type="ultrasonic_sensor" id="/|Ii}!f}SE~5Dniq0Dx#">
+            <field name="US_NUMBER">1</field>
+            <field name="PIN_TRIG">8</field>
+            <field name="PIN_ECHO">9</field>
+            <next>
+              <block type="OLED_init" id="LOG~TTO+W``$-7vly__E">
+                <field name="height">64</field>
+                <field name="address">0x3C</field>
+                <next>
+                  <block type="dht_sensor2" id="=kOalQ{Zv!bPrK%K9QWJ">
+                    <mutation matrix="null"></mutation>
+                    <field name="DHT_NUMBER">1</field>
+                    <field name="OUTPUT_TYPE">0</field>
+                    <field name="PIN_DHT">10</field>
+                    <next>
+                      <block type="otto_home" id="A5IsBU|Y.]dtf]JzPGn0"></block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP">
+      <block type="controls_if" id="z2bP$4%u8}7HCM0~V4w%">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="`T~U;YY5+Z+vuz#6i5!K">
+            <field name="OP">LT</field>
+            <value name="A">
+              <block type="ultrasonic_distance" id="d7]yAn_5,+oNri(/S%Pl">
+                <field name="US_NUMBER">1</field>
+              </block>
+            </value>
+            <value name="B">
+              <shadow type="math_number" id=":1p%dC#o*L[XF!q!-%B,">
+                <field name="NUM">15</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="otto_sound" id="dMA=1ps.pY~q%z$T5N52">
+            <field name="otto_sound">S_OhOoh</field>
+            <next>
+              <block type="OLED_data" id="CJC7,o_s|jHv:c8.mPl*">
+                <field name="draw">TRUE</field>
+                <value name="X">
+                  <shadow type="math_number" id="FfoYKMZdLg%]]4#GZTI6">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="Y">
+                  <shadow type="math_number" id="@U(!!HQkID|nuD.1KOD:">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="height">
+                  <shadow type="math_number" id="Gf3V]8o+xlnw?:K03p{K">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+                <value name="print">
+                  <shadow type="text" id="{ay[2p3oDHjIsfAM}=,[">
+                    <field name="TEXT">Oh Hello!</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="procedures_callnoreturn" id=":#+yn3/C#@]/sAPPHd%)">
+                    <mutation name="turn_right"></mutation>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="otto_move" id="VR!#Erh2=KVM}=SCPAph">
+            <field name="otto_move_sens">FORWARD</field>
+            <field name="otto_move_speed">1000</field>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="AU$xw`UCX*ZZ[LWM7a.2">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="button_touch_sensor2" id="5Gn%akXT=Xil[UCT9{4W">
+                <field name="PIN_BUTTON">A0</field>
+                <field name="LOGIC">FALSE</field>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="otto_sound" id="sB]]z6/~I$YGCbXQZmBh">
+                <field name="otto_sound">S_cuddly</field>
+                <next>
+                  <block type="OLED_clear" id="4XC=I1L*@/LIzkvxX.y9">
+                    <next>
+                      <block type="OLED_data" id="ht!:gLYr5x=JtOe06]*h">
+                        <field name="draw">TRUE</field>
+                        <value name="X">
+                          <shadow type="math_number" id="%.bW*DQ@H*NsxP2F0G,b">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
+                        <value name="Y">
+                          <shadow type="math_number" id="K]80(ooSBSV3l|)3}O}A">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
+                        <value name="height">
+                          <shadow type="math_number" id="g;n4HvM:u/a`1/[?B7o=">
+                            <field name="NUM">3</field>
+                          </shadow>
+                        </value>
+                        <value name="print">
+                          <shadow type="text" id="`9y^yD)Tl:c|~3s/5|mk">
+                            <field name="TEXT">Hello Otto</field>
+                          </shadow>
+                          <block type="dht_measure" id="sF[E,S!6~,x`K]TT)aAc">
+                            <mutation matrix="null"></mutation>
+                            <field name="DHT_NUMBER">1</field>
+                            <field name="OUTPUT_TYPE">0</field>
+                            <field name="OUTPUT_VALUE">2</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="OLED_display" id="fU/KwJ?^$#HG69.7pP-U"></block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="OLED_clear" id="^):yI8!$.s%8VK^lhFlN">
+                <next>
+                  <block type="OLED_data" id="tI}ZF%VYO.|Kp_P!FjR6">
+                    <field name="draw">TRUE</field>
+                    <value name="X">
+                      <shadow type="math_number" id="}nki^y*QY!YKMqa[k8L,">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                    <value name="Y">
+                      <shadow type="math_number" id="iH)mmW1B}bT;WoR{gw3k">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                    <value name="height">
+                      <shadow type="math_number" id="}h7w3{*Q=9d-Ds;QOOV-">
+                        <field name="NUM">3</field>
+                      </shadow>
+                    </value>
+                    <value name="print">
+                      <shadow type="text" id="`9y^yD)Tl:c|~3s/5|mk">
+                        <field name="TEXT">Hello Otto</field>
+                      </shadow>
+                      <block type="dht_measure" id="n[)hZD3e4@;:5E=RJ)P[">
+                        <mutation matrix="null"></mutation>
+                        <field name="DHT_NUMBER">1</field>
+                        <field name="OUTPUT_TYPE">0</field>
+                        <field name="OUTPUT_VALUE">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="OLED_data" id="J#SL!1P}hZ#y$3213gaT">
+                        <field name="draw">TRUE</field>
+                        <value name="X">
+                          <shadow type="math_number" id="Q-5VYjRS]X3R^A^Wq)aS">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
+                        <value name="Y">
+                          <shadow type="math_number" id="{3~,8/[]$B]@=-#t1P;G">
+                            <field name="NUM">35</field>
+                          </shadow>
+                        </value>
+                        <value name="height">
+                          <shadow type="math_number" id="XM8wgj=~|Q4n_p!{ci5T">
+                            <field name="NUM">3</field>
+                          </shadow>
+                        </value>
+                        <value name="print">
+                          <shadow type="text" id="`9y^yD)Tl:c|~3s/5|mk">
+                            <field name="TEXT">Hello Otto</field>
+                          </shadow>
+                          <block type="dht_measure" id="*?ym|-)W)$;bqB3/71UI">
+                            <mutation matrix="null"></mutation>
+                            <field name="DHT_NUMBER">1</field>
+                            <field name="OUTPUT_TYPE">0</field>
+                            <field name="OUTPUT_VALUE">1</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="OLED_display" id="5{PB|*7u:U!kbw$@uO_]"></block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="L[6qF-?2+`5_^V^Cu/BX" x="1116" y="124">
+    <field name="NAME">turn_right</field>
+    <statement name="STACK">
+      <block type="controls_repeat_ext" id="|]mw3RlOTKu5Lly*W_w!">
+        <value name="TIMES">
+          <shadow type="math_number" id="dq5|XlJ2`]MuxB64n}5Y">
+            <field name="NUM">4</field>
+          </shadow>
+        </value>
+        <statement name="DO">
+          <block type="otto_move" id="IAQ6^WV8FK1iHgLCPrh!">
+            <field name="otto_move_sens">BACKWARD</field>
+            <field name="otto_move_speed">2000</field>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_repeat_ext" id="_gD1Wf#Gy$gQmv#*V9mG">
+            <value name="TIMES">
+              <shadow type="math_number" id="CfPgjQl|6Ji/MR).x]tz">
+                <field name="NUM">6</field>
+              </shadow>
+            </value>
+            <statement name="DO">
+              <block type="otto_move" id="%,=W3i^}b;Yy{[s1{[EA">
+                <field name="otto_move_sens">RIGHT</field>
+                <field name="otto_move_speed">1000</field>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,121 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <toolbox>toolbox_arduino_all</toolbox>
+  <block type="base_setup_loop" id="I_*sR{h/K^MKEwQCP)ce" x="290" y="239">
+    <statement name="DO">
+      <block type="otto_configuration" id="FJ*TLypVj/3vE4#0};).">
+        <field name="PIN_YL">2</field>
+        <field name="PIN_YR">3</field>
+        <field name="PIN_RL">4</field>
+        <field name="PIN_RR">5</field>
+        <field name="PIN_Buzzer">13</field>
+        <next>
+          <block type="ultrasonic_sensor" id="/|Ii}!f}SE~5Dniq0Dx#">
+            <field name="US_NUMBER">1</field>
+            <field name="PIN_TRIG">8</field>
+            <field name="PIN_ECHO">9</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP">
+      <block type="controls_if" id="z2bP$4%u8}7HCM0~V4w%">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="`T~U;YY5+Z+vuz#6i5!K">
+            <field name="OP">LT</field>
+            <value name="A">
+              <block type="ultrasonic_distance" id="d7]yAn_5,+oNri(/S%Pl">
+                <field name="US_NUMBER">1</field>
+              </block>
+            </value>
+            <value name="B">
+              <shadow type="math_number" id=":1p%dC#o*L[XF!q!-%B,">
+                <field name="NUM">15</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="otto_sound" id="dMA=1ps.pY~q%z$T5N52">
+            <field name="otto_sound">S_OhOoh</field>
+            <next>
+              <block type="procedures_callnoreturn" id=":#+yn3/C#@]/sAPPHd%)">
+                <mutation name="turn_right"></mutation>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="otto_move" id="VR!#Erh2=KVM}=SCPAph">
+            <field name="otto_move_sens">FORWARD</field>
+            <field name="otto_move_speed">1000</field>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="P31REwVU!9pX,v/O]b/:">
+            <value name="IF0">
+              <block type="button_touch_sensor2" id="5Gn%akXT=Xil[UCT9{4W">
+                <field name="PIN_BUTTON">A0</field>
+                <field name="LOGIC">FALSE</field>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="otto_sound" id="sB]]z6/~I$YGCbXQZmBh">
+                <field name="otto_sound">S_superHappy</field>
+                <next>
+                  <block type="controls_repeat_ext" id="+{YdehxyQG!Nb%V:TY]:">
+                    <value name="TIMES">
+                      <shadow type="math_number" id="P:_#daMLN$|-3Dt%AQ=M">
+                        <field name="NUM">5</field>
+                      </shadow>
+                    </value>
+                    <statement name="DO">
+                      <block type="otto_dance" id="*ME?Ei[?^fY9daZX+Wny">
+                        <field name="otto_dance_movement">moonwalkerLEFT</field>
+                        <field name="otto_move_speed">1000</field>
+                        <field name="otto_dance_size">25</field>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="L[6qF-?2+`5_^V^Cu/BX" x="1023" y="271">
+    <field name="NAME">turn_right</field>
+    <statement name="STACK">
+      <block type="controls_repeat_ext" id="|]mw3RlOTKu5Lly*W_w!">
+        <value name="TIMES">
+          <shadow type="math_number" id="dq5|XlJ2`]MuxB64n}5Y">
+            <field name="NUM">4</field>
+          </shadow>
+        </value>
+        <statement name="DO">
+          <block type="otto_move" id="IAQ6^WV8FK1iHgLCPrh!">
+            <field name="otto_move_sens">BACKWARD</field>
+            <field name="otto_move_speed">2000</field>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_repeat_ext" id="_gD1Wf#Gy$gQmv#*V9mG">
+            <value name="TIMES">
+              <shadow type="math_number" id="CfPgjQl|6Ji/MR).x]tz">
+                <field name="NUM">6</field>
+              </shadow>
+            </value>
+            <statement name="DO">
+              <block type="otto_move" id="%,=W3i^}b;Yy{[s1{[EA">
+                <field name="otto_move_sens">RIGHT</field>
+                <field name="otto_move_speed">1000</field>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

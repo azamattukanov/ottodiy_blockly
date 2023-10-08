@@ -1,0 +1,721 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <toolbox>toolbox_arduino_all</toolbox>
+  <block type="base_setup_loop" id="yd$zNK~GW+l{NHUAE#.l" x="176" y="256">
+    <statement name="DO">
+      <block type="otto_configuration" id="BufPgLKg74?:rboj{7{,">
+        <field name="PIN_YL">2</field>
+        <field name="PIN_YR">3</field>
+        <field name="PIN_RL">4</field>
+        <field name="PIN_RR">5</field>
+        <field name="PIN_Buzzer">13</field>
+        <next>
+          <block type="ultrasonic_sensor" id="*KH(H=}|4IrHE19wTkgo">
+            <field name="US_NUMBER">1</field>
+            <field name="PIN_TRIG">8</field>
+            <field name="PIN_ECHO">9</field>
+            <next>
+              <block type="mouth_init" id="bN6;r(VC%;u|{#IcX9f#">
+                <field name="PIN_CLK">A1</field>
+                <field name="PIN_CS">A2</field>
+                <field name="PIN_DIN">A3</field>
+                <field name="Orientation">0</field>
+                <next>
+                  <block type="otto_arms_init" id="xuo^@+N;6)O7#y5I[;O)">
+                    <field name="PIN_AL">6</field>
+                    <field name="PIN_AR">7</field>
+                    <next>
+                      <block type="otto_arms_home" id="DWT0ZGK;LQV#2b*+HvMn">
+                        <next>
+                          <block type="otto_home" id="6o`Qy[MoeWya#nsO(D%4"></block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP">
+      <block type="controls_if" id="wV*y+#h}mI4-X2FdwXQK">
+        <value name="IF0">
+          <block type="button_touch_sensor2" id="AQPG@I$8z)]2W@.C#A)b">
+            <field name="PIN_BUTTON">A0</field>
+            <field name="LOGIC">FALSE</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_whileUntil" id="9m+HvlT=+VYRl8vQt[q.">
+            <field name="MODE">UNTIL</field>
+            <value name="BOOL">
+              <block type="logic_compare" id="}PSzY$$|WCa1)K3$N|sx">
+                <field name="OP">LT</field>
+                <value name="A">
+                  <block type="ultrasonic_distance" id=":+%A$tCnf+C)zzf3mpO_">
+                    <field name="US_NUMBER">1</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <shadow type="math_number" id="x[o1;bX!|;/l9-$(=@V,">
+                    <field name="NUM">15</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="procedures_callnoreturn" id="^|gVV;Ev-8~z2O|e^dwV">
+                <mutation name="move_forward_normal"></mutation>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id=",0aK}$ei`WKmwn+OfDs1" x="857" y="266">
+    <field name="NAME">left_arm_swing</field>
+    <statement name="STACK">
+      <block type="servo_PWM" id="Y+O7?xS5RT])jMGrr=C}">
+        <field name="PIN">6</field>
+        <value name="DEGREE">
+          <shadow type="inout_angle_maths" id="7UmINl:u2q+2Rsh?JFE)">
+            <field name="ANGLE">120</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="servo_PWM" id="f)KN*f17um[3scZVD|k}">
+            <field name="PIN">6</field>
+            <value name="DEGREE">
+              <shadow type="inout_angle_maths" id="LfiC=5yw2u!fukG+W4xQ">
+                <field name="ANGLE">60</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="oKkhCFOesm,;bfp3tq3." x="1531" y="272">
+    <field name="NAME">oh!_emotions</field>
+    <statement name="STACK">
+      <block type="mouth_matrix8x8" id="|$@==3ekG;[rZlENygSC">
+        <field name="Pixel0">FALSE</field>
+        <field name="Pixel8">FALSE</field>
+        <field name="Pixel16">TRUE</field>
+        <field name="Pixel24">TRUE</field>
+        <field name="Pixel32">TRUE</field>
+        <field name="Pixel40">TRUE</field>
+        <field name="Pixel48">FALSE</field>
+        <field name="Pixel56">FALSE</field>
+        <field name="Pixel1">FALSE</field>
+        <field name="Pixel9">TRUE</field>
+        <field name="Pixel17">FALSE</field>
+        <field name="Pixel25">FALSE</field>
+        <field name="Pixel33">FALSE</field>
+        <field name="Pixel41">FALSE</field>
+        <field name="Pixel49">TRUE</field>
+        <field name="Pixel57">FALSE</field>
+        <field name="Pixel2">TRUE</field>
+        <field name="Pixel10">TRUE</field>
+        <field name="Pixel18">FALSE</field>
+        <field name="Pixel26">FALSE</field>
+        <field name="Pixel34">FALSE</field>
+        <field name="Pixel42">FALSE</field>
+        <field name="Pixel50">TRUE</field>
+        <field name="Pixel58">TRUE</field>
+        <field name="Pixel3">TRUE</field>
+        <field name="Pixel11">TRUE</field>
+        <field name="Pixel19">FALSE</field>
+        <field name="Pixel27">FALSE</field>
+        <field name="Pixel35">FALSE</field>
+        <field name="Pixel43">FALSE</field>
+        <field name="Pixel51">TRUE</field>
+        <field name="Pixel59">TRUE</field>
+        <field name="Pixel4">TRUE</field>
+        <field name="Pixel12">TRUE</field>
+        <field name="Pixel20">FALSE</field>
+        <field name="Pixel28">FALSE</field>
+        <field name="Pixel36">FALSE</field>
+        <field name="Pixel44">FALSE</field>
+        <field name="Pixel52">TRUE</field>
+        <field name="Pixel60">TRUE</field>
+        <field name="Pixel5">TRUE</field>
+        <field name="Pixel13">TRUE</field>
+        <field name="Pixel21">FALSE</field>
+        <field name="Pixel29">FALSE</field>
+        <field name="Pixel37">FALSE</field>
+        <field name="Pixel45">FALSE</field>
+        <field name="Pixel53">TRUE</field>
+        <field name="Pixel61">TRUE</field>
+        <field name="Pixel6">FALSE</field>
+        <field name="Pixel14">TRUE</field>
+        <field name="Pixel22">FALSE</field>
+        <field name="Pixel30">FALSE</field>
+        <field name="Pixel38">FALSE</field>
+        <field name="Pixel46">FALSE</field>
+        <field name="Pixel54">TRUE</field>
+        <field name="Pixel62">FALSE</field>
+        <field name="Pixel7">FALSE</field>
+        <field name="Pixel15">FALSE</field>
+        <field name="Pixel23">TRUE</field>
+        <field name="Pixel31">TRUE</field>
+        <field name="Pixel39">TRUE</field>
+        <field name="Pixel47">TRUE</field>
+        <field name="Pixel55">FALSE</field>
+        <field name="Pixel63">FALSE</field>
+        <next>
+          <block type="base_delay" id="=M=fSUR/AyupAI+Z$_|5">
+            <field name="unite">s</field>
+            <value name="DELAY_TIME">
+              <shadow type="math_number" id="Vbc2,K:JmL2==K,h|7hd">
+                <field name="NUM">2</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="mouth_clear" id="Y@5.UA#}ASFbyf`P:42N">
+                <next>
+                  <block type="mouth_matrix8x8" id="qmZ$JPqeDQBkq*:?Up`.">
+                    <field name="Pixel0">TRUE</field>
+                    <field name="Pixel8">TRUE</field>
+                    <field name="Pixel16">TRUE</field>
+                    <field name="Pixel24">FALSE</field>
+                    <field name="Pixel32">FALSE</field>
+                    <field name="Pixel40">TRUE</field>
+                    <field name="Pixel48">TRUE</field>
+                    <field name="Pixel56">TRUE</field>
+                    <field name="Pixel1">FALSE</field>
+                    <field name="Pixel9">TRUE</field>
+                    <field name="Pixel17">FALSE</field>
+                    <field name="Pixel25">FALSE</field>
+                    <field name="Pixel33">FALSE</field>
+                    <field name="Pixel41">FALSE</field>
+                    <field name="Pixel49">TRUE</field>
+                    <field name="Pixel57">FALSE</field>
+                    <field name="Pixel2">FALSE</field>
+                    <field name="Pixel10">TRUE</field>
+                    <field name="Pixel18">FALSE</field>
+                    <field name="Pixel26">FALSE</field>
+                    <field name="Pixel34">FALSE</field>
+                    <field name="Pixel42">FALSE</field>
+                    <field name="Pixel50">TRUE</field>
+                    <field name="Pixel58">FALSE</field>
+                    <field name="Pixel3">FALSE</field>
+                    <field name="Pixel11">TRUE</field>
+                    <field name="Pixel19">TRUE</field>
+                    <field name="Pixel27">TRUE</field>
+                    <field name="Pixel35">TRUE</field>
+                    <field name="Pixel43">TRUE</field>
+                    <field name="Pixel51">TRUE</field>
+                    <field name="Pixel59">FALSE</field>
+                    <field name="Pixel4">FALSE</field>
+                    <field name="Pixel12">TRUE</field>
+                    <field name="Pixel20">TRUE</field>
+                    <field name="Pixel28">TRUE</field>
+                    <field name="Pixel36">TRUE</field>
+                    <field name="Pixel44">TRUE</field>
+                    <field name="Pixel52">TRUE</field>
+                    <field name="Pixel60">FALSE</field>
+                    <field name="Pixel5">FALSE</field>
+                    <field name="Pixel13">TRUE</field>
+                    <field name="Pixel21">FALSE</field>
+                    <field name="Pixel29">FALSE</field>
+                    <field name="Pixel37">FALSE</field>
+                    <field name="Pixel45">FALSE</field>
+                    <field name="Pixel53">TRUE</field>
+                    <field name="Pixel61">FALSE</field>
+                    <field name="Pixel6">FALSE</field>
+                    <field name="Pixel14">TRUE</field>
+                    <field name="Pixel22">FALSE</field>
+                    <field name="Pixel30">FALSE</field>
+                    <field name="Pixel38">FALSE</field>
+                    <field name="Pixel46">FALSE</field>
+                    <field name="Pixel54">TRUE</field>
+                    <field name="Pixel62">FALSE</field>
+                    <field name="Pixel7">TRUE</field>
+                    <field name="Pixel15">TRUE</field>
+                    <field name="Pixel23">TRUE</field>
+                    <field name="Pixel31">FALSE</field>
+                    <field name="Pixel39">FALSE</field>
+                    <field name="Pixel47">TRUE</field>
+                    <field name="Pixel55">TRUE</field>
+                    <field name="Pixel63">TRUE</field>
+                    <next>
+                      <block type="base_delay" id="$|q7bGH[m`)`_$%*}/#z">
+                        <field name="unite">s</field>
+                        <value name="DELAY_TIME">
+                          <shadow type="math_number" id="G-f{O(?P+:$a;9EY@BzV">
+                            <field name="NUM">2</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="mouth_clear" id="cVd6C#^4]InQ}-Ey!RiN">
+                            <next>
+                              <block type="mouth_matrix8x8" id="8gnd8]*Asd?dUG]REJS|">
+                                <field name="Pixel0">FALSE</field>
+                                <field name="Pixel8">FALSE</field>
+                                <field name="Pixel16">TRUE</field>
+                                <field name="Pixel24">TRUE</field>
+                                <field name="Pixel32">TRUE</field>
+                                <field name="Pixel40">FALSE</field>
+                                <field name="Pixel48">FALSE</field>
+                                <field name="Pixel56">FALSE</field>
+                                <field name="Pixel1">FALSE</field>
+                                <field name="Pixel9">FALSE</field>
+                                <field name="Pixel17">TRUE</field>
+                                <field name="Pixel25">TRUE</field>
+                                <field name="Pixel33">TRUE</field>
+                                <field name="Pixel41">FALSE</field>
+                                <field name="Pixel49">FALSE</field>
+                                <field name="Pixel57">FALSE</field>
+                                <field name="Pixel2">FALSE</field>
+                                <field name="Pixel10">FALSE</field>
+                                <field name="Pixel18">TRUE</field>
+                                <field name="Pixel26">TRUE</field>
+                                <field name="Pixel34">TRUE</field>
+                                <field name="Pixel42">FALSE</field>
+                                <field name="Pixel50">FALSE</field>
+                                <field name="Pixel58">FALSE</field>
+                                <field name="Pixel3">FALSE</field>
+                                <field name="Pixel11">FALSE</field>
+                                <field name="Pixel19">FALSE</field>
+                                <field name="Pixel27">TRUE</field>
+                                <field name="Pixel35">FALSE</field>
+                                <field name="Pixel43">FALSE</field>
+                                <field name="Pixel51">FALSE</field>
+                                <field name="Pixel59">FALSE</field>
+                                <field name="Pixel4">FALSE</field>
+                                <field name="Pixel12">FALSE</field>
+                                <field name="Pixel20">FALSE</field>
+                                <field name="Pixel28">FALSE</field>
+                                <field name="Pixel36">FALSE</field>
+                                <field name="Pixel44">FALSE</field>
+                                <field name="Pixel52">FALSE</field>
+                                <field name="Pixel60">FALSE</field>
+                                <field name="Pixel5">FALSE</field>
+                                <field name="Pixel13">FALSE</field>
+                                <field name="Pixel21">FALSE</field>
+                                <field name="Pixel29">TRUE</field>
+                                <field name="Pixel37">FALSE</field>
+                                <field name="Pixel45">FALSE</field>
+                                <field name="Pixel53">FALSE</field>
+                                <field name="Pixel61">FALSE</field>
+                                <field name="Pixel6">FALSE</field>
+                                <field name="Pixel14">FALSE</field>
+                                <field name="Pixel22">TRUE</field>
+                                <field name="Pixel30">TRUE</field>
+                                <field name="Pixel38">TRUE</field>
+                                <field name="Pixel46">FALSE</field>
+                                <field name="Pixel54">FALSE</field>
+                                <field name="Pixel62">FALSE</field>
+                                <field name="Pixel7">FALSE</field>
+                                <field name="Pixel15">FALSE</field>
+                                <field name="Pixel23">FALSE</field>
+                                <field name="Pixel31">TRUE</field>
+                                <field name="Pixel39">FALSE</field>
+                                <field name="Pixel47">FALSE</field>
+                                <field name="Pixel55">FALSE</field>
+                                <field name="Pixel63">FALSE</field>
+                                <next>
+                                  <block type="base_delay" id="xoBI1V=ywbTE)i5e*N)5">
+                                    <field name="unite">s</field>
+                                    <value name="DELAY_TIME">
+                                      <shadow type="math_number" id="dYR$T5`Egj?TR9sYbr.Z">
+                                        <field name="NUM">2</field>
+                                      </shadow>
+                                    </value>
+                                    <next>
+                                      <block type="mouth_clear" id="z$EN`c6HQUk0Ge8NS;jn"></block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="?CjWIhBs,*0[,BL~@PyQ" x="859" y="428">
+    <field name="NAME">move_forward_normal</field>
+    <statement name="STACK">
+      <block type="procedures_callnoreturn" id="EHXq_?jb3jOr*ub!S;L;">
+        <mutation name="step_two_slow"></mutation>
+        <next>
+          <block type="procedures_callnoreturn" id="Bi}k0uBG}HOniD,*.BH^">
+            <mutation name="step_one_slow"></mutation>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="w1;NRuqF9}-XqQ}xXum(" x="827" y="549">
+    <field name="NAME">step_one_slow</field>
+    <statement name="STACK">
+      <block type="otto_movelegs" id="(dmaN=.j+4rF-=COkRTt">
+        <value name="PIN_YL">
+          <shadow type="inout_angle_maths" id="^3`#0q]IZ).+T~JBm1B)">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="PIN_YR">
+          <shadow type="inout_angle_maths" id="Dx!}SB^?u?3xa6sQ2PKc">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="PIN_RL">
+          <shadow type="inout_angle_maths" id="%S9:H.+S3dxF2esrmE1g">
+            <field name="ANGLE">115</field>
+          </shadow>
+        </value>
+        <value name="PIN_RR">
+          <shadow type="inout_angle_maths" id="gTj/k6L.of;V%5{z.kwf">
+            <field name="ANGLE">135</field>
+          </shadow>
+        </value>
+        <value name="TEMPO">
+          <shadow type="math_number" id="[]HtRrnZ1,-rP7?GT5Ln">
+            <field name="NUM">300</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="otto_movelegs" id="B7f*qH,ymeejRn)L_oB.">
+            <value name="PIN_YL">
+              <shadow type="inout_angle_maths" id="fi@nl?:lt[SP|T3u*,m9">
+                <field name="ANGLE">60</field>
+              </shadow>
+            </value>
+            <value name="PIN_YR">
+              <shadow type="inout_angle_maths" id="j6VpdY#%0N#Ry!dS4xDd">
+                <field name="ANGLE">60</field>
+              </shadow>
+            </value>
+            <value name="PIN_RL">
+              <shadow type="inout_angle_maths" id="Fs.aX^pn1^DD#3u?tLi8">
+                <field name="ANGLE">115</field>
+              </shadow>
+            </value>
+            <value name="PIN_RR">
+              <shadow type="inout_angle_maths" id="?~m7e0)f%F[AjuEN6z._">
+                <field name="ANGLE">135</field>
+              </shadow>
+            </value>
+            <value name="TEMPO">
+              <shadow type="math_number" id="7kFw~}k0iWJv(XRFQ,jc">
+                <field name="NUM">300</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="otto_movelegs" id="J`Lr1InCJY2`}^.H7C7_">
+                <value name="PIN_YL">
+                  <shadow type="inout_angle_maths" id="-nJ[MPOAm[%Ti}G4Qf]4">
+                    <field name="ANGLE">60</field>
+                  </shadow>
+                </value>
+                <value name="PIN_YR">
+                  <shadow type="inout_angle_maths" id="[[qEi7%Kcjvr-IQ;P}Q{">
+                    <field name="ANGLE">60</field>
+                  </shadow>
+                </value>
+                <value name="PIN_RL">
+                  <shadow type="inout_angle_maths" id="N.3|`)-kOeo167ey/^Oc">
+                    <field name="ANGLE">115</field>
+                  </shadow>
+                </value>
+                <value name="PIN_RR">
+                  <shadow type="inout_angle_maths" id="yu=2v(0a(.e~b$1[*$O3">
+                    <field name="ANGLE">135</field>
+                  </shadow>
+                </value>
+                <value name="TEMPO">
+                  <shadow type="math_number" id="j)@c]Gjz%?au2#%AXk)F">
+                    <field name="NUM">300</field>
+                  </shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="tP]_%#x|X}AZH@a9A6W0" x="829" y="722">
+    <field name="NAME">step_two_slow</field>
+    <statement name="STACK">
+      <block type="otto_movelegs" id="P2.]a$3_q|tCeu+j9Qfx">
+        <value name="PIN_YL">
+          <shadow type="inout_angle_maths" id="0#$)|4_)4J6|[S[n+aj=">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="PIN_YR">
+          <shadow type="inout_angle_maths" id="$%sh$#3b8tTaG+41])/5">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="PIN_RL">
+          <shadow type="inout_angle_maths" id="?f/*{z8P)zil=/g+Wa@8">
+            <field name="ANGLE">45</field>
+          </shadow>
+        </value>
+        <value name="PIN_RR">
+          <shadow type="inout_angle_maths" id="Pw*K#]-=sQ`F_M*HA_.i">
+            <field name="ANGLE">65</field>
+          </shadow>
+        </value>
+        <value name="TEMPO">
+          <shadow type="math_number" id="Jm4Cswn=6d%R;*Dz?E8_">
+            <field name="NUM">300</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="otto_movelegs" id="LHacuRN`]ZAefR)XY!0v">
+            <value name="PIN_YL">
+              <shadow type="inout_angle_maths" id=";7a{:`RWa=Q$^I3RoJIh">
+                <field name="ANGLE">120</field>
+              </shadow>
+            </value>
+            <value name="PIN_YR">
+              <shadow type="inout_angle_maths" id="Y2Op[UwIsL2T[0#i9,MA">
+                <field name="ANGLE">120</field>
+              </shadow>
+            </value>
+            <value name="PIN_RL">
+              <shadow type="inout_angle_maths" id="Xt8n{I%Co}Rb?ILK6?mn">
+                <field name="ANGLE">45</field>
+              </shadow>
+            </value>
+            <value name="PIN_RR">
+              <shadow type="inout_angle_maths" id="%B(1U:6LJf)FLA)c=[_i">
+                <field name="ANGLE">65</field>
+              </shadow>
+            </value>
+            <value name="TEMPO">
+              <shadow type="math_number" id="38`?T=)9C6sxyUXu4KAX">
+                <field name="NUM">300</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="otto_movelegs" id="q$kJuq|3*zW_I@Yjx-z|">
+                <value name="PIN_YL">
+                  <shadow type="inout_angle_maths" id="~1p;*k/=n1_T42xbd{;~">
+                    <field name="ANGLE">120</field>
+                  </shadow>
+                </value>
+                <value name="PIN_YR">
+                  <shadow type="inout_angle_maths" id="W-:hw;S;=JqScFq1TGZJ">
+                    <field name="ANGLE">120</field>
+                  </shadow>
+                </value>
+                <value name="PIN_RL">
+                  <shadow type="inout_angle_maths" id="(0C;FFKOdD3CwRE1,{bP">
+                    <field name="ANGLE">45</field>
+                  </shadow>
+                </value>
+                <value name="PIN_RR">
+                  <shadow type="inout_angle_maths" id="a!7?_!}S!|7s-;=?Joc=">
+                    <field name="ANGLE">65</field>
+                  </shadow>
+                </value>
+                <value name="TEMPO">
+                  <shadow type="math_number" id="/+3,]w0A.YEe%85qSMD-">
+                    <field name="NUM">300</field>
+                  </shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="JI,8XZVvY_3e52@!LC0S" x="830" y="897">
+    <field name="NAME">step_one_back_slow</field>
+    <statement name="STACK">
+      <block type="otto_movelegs" id="$L.T+e26AzDY5BUlf9TL">
+        <value name="PIN_YL">
+          <shadow type="inout_angle_maths" id="*By1E[){/[(^+a;n4Jok">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="PIN_YR">
+          <shadow type="inout_angle_maths" id="8DISF;vvT~~v!@[.|U(x">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="PIN_RL">
+          <shadow type="inout_angle_maths" id="v4IWjpSc]VmlNmRD:!XX">
+            <field name="ANGLE">115</field>
+          </shadow>
+        </value>
+        <value name="PIN_RR">
+          <shadow type="inout_angle_maths" id="u!.Z$C}}adsk;c)htE[J">
+            <field name="ANGLE">135</field>
+          </shadow>
+        </value>
+        <value name="TEMPO">
+          <shadow type="math_number" id="JW?1yqz4j*(h:,_$391d">
+            <field name="NUM">300</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="otto_movelegs" id="LLn,hy]BhF^.T.{$YQ.x">
+            <value name="PIN_YL">
+              <shadow type="inout_angle_maths" id="+Yq])7moeBxZ]:o`Jn[v">
+                <field name="ANGLE">120</field>
+              </shadow>
+            </value>
+            <value name="PIN_YR">
+              <shadow type="inout_angle_maths" id="{;]~ck-~^lu8)(@#nzep">
+                <field name="ANGLE">120</field>
+              </shadow>
+            </value>
+            <value name="PIN_RL">
+              <shadow type="inout_angle_maths" id="@U|(3S#|9lD!@_Hb?v?L">
+                <field name="ANGLE">115</field>
+              </shadow>
+            </value>
+            <value name="PIN_RR">
+              <shadow type="inout_angle_maths" id="J^f6;uBncF9wXL^S4qOH">
+                <field name="ANGLE">135</field>
+              </shadow>
+            </value>
+            <value name="TEMPO">
+              <shadow type="math_number" id="~#bwX*b5,DxciP)rUi~t">
+                <field name="NUM">300</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="otto_movelegs" id="nZ8,pl)y0I[T{KM0sWW2">
+                <value name="PIN_YL">
+                  <shadow type="inout_angle_maths" id="9WhN+D%ev%Ryi(NzkBK1">
+                    <field name="ANGLE">120</field>
+                  </shadow>
+                </value>
+                <value name="PIN_YR">
+                  <shadow type="inout_angle_maths" id="82Ee1#z:)Nx2*yu0@yBk">
+                    <field name="ANGLE">120</field>
+                  </shadow>
+                </value>
+                <value name="PIN_RL">
+                  <shadow type="inout_angle_maths" id="ke@9D};no2#uIQL*eA*l">
+                    <field name="ANGLE">115</field>
+                  </shadow>
+                </value>
+                <value name="PIN_RR">
+                  <shadow type="inout_angle_maths" id="zoLCLpC9Y#bVV2+uspR9">
+                    <field name="ANGLE">135</field>
+                  </shadow>
+                </value>
+                <value name="TEMPO">
+                  <shadow type="math_number" id="_j$`j@8/`C/U:%mx)x6?">
+                    <field name="NUM">300</field>
+                  </shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="oiX)[n:TCJg3`V/e$Z#(" x="830" y="1071">
+    <field name="NAME">step_two_back_slow</field>
+    <statement name="STACK">
+      <block type="otto_movelegs" id="[AR+VOZzZ!dYR,J0P[!6">
+        <value name="PIN_YL">
+          <shadow type="inout_angle_maths" id="Y4lIcJgRnT2oi.NSW8uK">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="PIN_YR">
+          <shadow type="inout_angle_maths" id="3~F^l$q7lqGJP%m}9cJ.">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="PIN_RL">
+          <shadow type="inout_angle_maths" id="nutG,X)=?u(_7G#D]3iu">
+            <field name="ANGLE">45</field>
+          </shadow>
+        </value>
+        <value name="PIN_RR">
+          <shadow type="inout_angle_maths" id="pM#P4hT.0T`(ksZCjaPS">
+            <field name="ANGLE">65</field>
+          </shadow>
+        </value>
+        <value name="TEMPO">
+          <shadow type="math_number" id="is:BoA1;m^[_JQ1X4a1[">
+            <field name="NUM">300</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="otto_movelegs" id="6.|W2w:wS@,*KT~-t|+`">
+            <value name="PIN_YL">
+              <shadow type="inout_angle_maths" id="g.1lP7{gGnJc+Vmo-e/2">
+                <field name="ANGLE">60</field>
+              </shadow>
+            </value>
+            <value name="PIN_YR">
+              <shadow type="inout_angle_maths" id="`T#CZX^r83V`^Ny#b+tH">
+                <field name="ANGLE">60</field>
+              </shadow>
+            </value>
+            <value name="PIN_RL">
+              <shadow type="inout_angle_maths" id="Sac3#7953,*v|]XaQW.Q">
+                <field name="ANGLE">45</field>
+              </shadow>
+            </value>
+            <value name="PIN_RR">
+              <shadow type="inout_angle_maths" id="wOELho=JlLlP/]N,P/Q7">
+                <field name="ANGLE">65</field>
+              </shadow>
+            </value>
+            <value name="TEMPO">
+              <shadow type="math_number" id="TgOi!3XsUtzZw;N]}DhV">
+                <field name="NUM">300</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="otto_movelegs" id="Tu!_RqCOi1en@d(r4H*4">
+                <value name="PIN_YL">
+                  <shadow type="inout_angle_maths" id="jO,n;Ri0-6E2cKB3K{R1">
+                    <field name="ANGLE">60</field>
+                  </shadow>
+                </value>
+                <value name="PIN_YR">
+                  <shadow type="inout_angle_maths" id="2)kNaWJz`xChL87x7dIt">
+                    <field name="ANGLE">60</field>
+                  </shadow>
+                </value>
+                <value name="PIN_RL">
+                  <shadow type="inout_angle_maths" id="td@`LsM`9}9)Qs!/[r_@">
+                    <field name="ANGLE">45</field>
+                  </shadow>
+                </value>
+                <value name="PIN_RR">
+                  <shadow type="inout_angle_maths" id="]#m}pS:%n;bF=3{l?G=O">
+                    <field name="ANGLE">65</field>
+                  </shadow>
+                </value>
+                <value name="TEMPO">
+                  <shadow type="math_number" id="WP%t,bytNpC)xAW$fD*W">
+                    <field name="NUM">300</field>
+                  </shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,167 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <toolbox>toolbox_arduino_all</toolbox>
+  <block type="otto_configuration" id="JktgRa2?@1vT=EuG3-`C" x="13" y="-59">
+    <field name="PIN_YL">2</field>
+    <field name="PIN_YR">3</field>
+    <field name="PIN_RL">4</field>
+    <field name="PIN_RR">5</field>
+    <field name="PIN_Buzzer">13</field>
+    <next>
+      <block type="otto_movelegs" id="ybTE,pX}dx[WQ:3~JnQ+">
+        <value name="PIN_YL">
+          <shadow type="inout_angle_maths" id="km5.^5BwrBTmsJod!G~w">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="PIN_YR">
+          <shadow type="inout_angle_maths" id="TRf3/P?OLb.%TeU7[%*B">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="PIN_RL">
+          <shadow type="inout_angle_maths" id="~8@8R_q:0{OHFn6BR|?r">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="PIN_RR">
+          <shadow type="inout_angle_maths" id="$`}stIzWV2LZh,:Y6!0E">
+            <field name="ANGLE">90</field>
+          </shadow>
+        </value>
+        <value name="TEMPO">
+          <shadow type="math_number" id="-IX]/;e,+P3/Xv=KKC#3">
+            <field name="NUM">200</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="otto_calibration" id="}EfAxN~tMWvOt|ucpZ*;">
+            <value name="LL">
+              <shadow type="math_number" id="rP!#E;jxl~[2K3,]+s|O">
+                <field name="NUM">4</field>
+              </shadow>
+            </value>
+            <value name="RL">
+              <shadow type="math_number" id="?aYBKKq[n8iZ+i2=l,1L">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="LF">
+              <shadow type="math_number" id="GakVXd]Z4zXGo3W4vbmx">
+                <field name="NUM">8</field>
+              </shadow>
+            </value>
+            <value name="RF">
+              <shadow type="math_number" id="RmA[di*$e#UKSdc.@@+Y">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="ultrasonic_sensor" id="KW?nfEWev]jt3B2N3($;">
+                <field name="US_NUMBER">1</field>
+                <field name="PIN_TRIG">8</field>
+                <field name="PIN_ECHO">9</field>
+                <next>
+                  <block type="mouth_init" id="IN)6]290U^/AQ7!pV2d2">
+                    <field name="PIN_CLK">A1</field>
+                    <field name="PIN_CS">A2</field>
+                    <field name="PIN_DIN">A3</field>
+                    <field name="Orientation">0</field>
+                    <next>
+                      <block type="otto_arms_init" id="-}eN8?`Id9FS:@oAWy+X">
+                        <field name="PIN_AL">6</field>
+                        <field name="PIN_AR">7</field>
+                        <next>
+                          <block type="otto_arms_home" id="7BO+:xkct2UATd0H,7rA"></block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="base_loop" id="ZT^Im/9}Em4q-Ix#*f.0" x="30" y="289">
+    <statement name="LOOP">
+      <block type="controls_if" id="RnTw/cp:ucB`_7fR04Zx">
+        <value name="IF0">
+          <block type="logic_compare" id="Q9gzPCQ(J;K1QP,Emf*!">
+            <field name="OP">LT</field>
+            <value name="A">
+              <block type="ultrasonic_distance" id="Td2}wv#PXp{Y3t9n@;h3">
+                <field name="US_NUMBER">1</field>
+              </block>
+            </value>
+            <value name="B">
+              <shadow type="math_number" id="?3#4hd~kwO;$I3=@Kq11">
+                <field name="NUM">20</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="otto_gesture" id="P1Z1i9{7%px2R2D]5r{I">
+            <field name="otto_gesture">OttoConfused</field>
+            <next>
+              <block type="controls_repeat_ext" id="),cos^k0!@#qu8^b1]ZM">
+                <value name="TIMES">
+                  <shadow type="math_number" id="rU|{,EXt~(RkwTJV[#.,">
+                    <field name="NUM">2</field>
+                  </shadow>
+                </value>
+                <statement name="DO">
+                  <block type="otto_move" id="xgKec3l^M%[j(vwt4!fB">
+                    <field name="otto_move_sens">BACKWARD</field>
+                    <field name="otto_move_speed">1000</field>
+                    <next>
+                      <block type="mouth_face" id="w5[Q#:c=[d~trESe4_kx">
+                        <field name="otto9_mouth_choice">tongueOut</field>
+                        <next>
+                          <block type="otto_arms" id="h1I;*Z?]gX}C)i-T(}@m">
+                            <field name="otto_arms_choice">HANDSUP</field>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_repeat_ext" id="4g:|4sc^gX23e`6U6q4E">
+                    <value name="TIMES">
+                      <shadow type="math_number" id=":%Up,h*=Z)*-8,Ar9Qh$">
+                        <field name="NUM">3</field>
+                      </shadow>
+                    </value>
+                    <statement name="DO">
+                      <block type="otto_move" id="6-tf+v0^IKV6q@l+19}O">
+                        <field name="otto_move_sens">RIGHT</field>
+                        <field name="otto_move_speed">1000</field>
+                        <next>
+                          <block type="mouth_face" id=",bVb/w}%@*(CUSs3aj88">
+                            <field name="otto9_mouth_choice">21</field>
+                            <next>
+                              <block type="otto_arms_home" id="1Jd0m^9PB1[`N-7%:i-@"></block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="otto_move" id="^^3t_ci9F}zS-*u0.%Kq">
+            <field name="otto_move_sens">FORWARD</field>
+            <field name="otto_move_speed">1000</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
